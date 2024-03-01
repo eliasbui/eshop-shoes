@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Eshop.Infrastructure.Helper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Eshop.Infrastructure.EfCore;
 
@@ -8,9 +10,9 @@ public abstract class DbContextDesignFactoryBase<TDbContext> : IDesignTimeDbCont
 {
     public TDbContext CreateDbContext(string[] args)
     {
-        // var connString = ConfigurationHelper.GetConfiguration(AppContext.BaseDirectory)
-        //     ?.GetConnectionString(""postgres"");
-        var connString = "";
+        var connString = ConfigurationHelper.GetConfiguration(AppContext.BaseDirectory)
+            ?.GetConnectionString("postgres");
+
         Console.WriteLine($"Connection String: {connString}");
 
         var optionsBuilder = new DbContextOptionsBuilder<TDbContext>()
