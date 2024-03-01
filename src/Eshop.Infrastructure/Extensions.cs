@@ -80,8 +80,8 @@ namespace Eshop.Infrastructure
         }
 
         [DebuggerStepThrough]
-        public static TResult SafeGetListQuery<TResult, TResponse>(this HttpContext httpContext, string query)
-            where TResult : IListQuery<TResponse>, new()
+        public static TResult? SafeGetListQuery<TResult, TResponse>(this HttpContext httpContext, string query)
+            where TResult : IListQuery<TResponse>, new() where TResponse : notnull
         {
             var queryModel = new TResult();
             if (!(string.IsNullOrEmpty(query) || query == "{}"))
@@ -89,7 +89,7 @@ namespace Eshop.Infrastructure
                 queryModel = JsonConvert.DeserializeObject<TResult>(query);
             }
 
-            httpContext?.Response.Headers.Add("x-query",
+            httpContext?.Response.Headers.Append("x-query",
                 JsonConvert.SerializeObject(queryModel,
                     new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
 
