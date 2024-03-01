@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Infrastructure.EfCore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Infrastructure.OTel", "src\Eshop.Infrastructure.OTel\Eshop.Infrastructure.OTel.csproj", "{504DD420-E681-40AA-B47E-CA780EA9E887}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Infrastructure", "src\Eshop.Infrastructure\Eshop.Infrastructure.csproj", "{89CDC55F-6560-408D-AF16-A1F768C76850}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,7 @@ Global
 		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8} = {5625E5EA-BB60-405E-A5AB-C20537024070}
 		{D8511575-9D96-4A30-BB56-18A44470E203} = {5625E5EA-BB60-405E-A5AB-C20537024070}
 		{504DD420-E681-40AA-B47E-CA780EA9E887} = {5625E5EA-BB60-405E-A5AB-C20537024070}
+		{89CDC55F-6560-408D-AF16-A1F768C76850} = {5625E5EA-BB60-405E-A5AB-C20537024070}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -31,5 +34,9 @@ Global
 		{504DD420-E681-40AA-B47E-CA780EA9E887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{504DD420-E681-40AA-B47E-CA780EA9E887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{504DD420-E681-40AA-B47E-CA780EA9E887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CDC55F-6560-408D-AF16-A1F768C76850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CDC55F-6560-408D-AF16-A1F768C76850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CDC55F-6560-408D-AF16-A1F768C76850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CDC55F-6560-408D-AF16-A1F768C76850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
