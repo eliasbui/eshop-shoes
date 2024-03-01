@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5625E5EA-BB60-405E-A5AB-C20537024070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Core", "src\Eshop.Core\Eshop.Core.csproj", "{9BB5A52F-E228-4300-AA70-46020FB448FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Core", "src\Eshop.Core\Eshop.Core.csproj", "{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,12 +10,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9BB5A52F-E228-4300-AA70-46020FB448FC} = {5625E5EA-BB60-405E-A5AB-C20537024070}
+		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8} = {5625E5EA-BB60-405E-A5AB-C20537024070}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9BB5A52F-E228-4300-AA70-46020FB448FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BB5A52F-E228-4300-AA70-46020FB448FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BB5A52F-E228-4300-AA70-46020FB448FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BB5A52F-E228-4300-AA70-46020FB448FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F33F9D-9CEA-4CA0-9DB3-2EE116C7E7F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
