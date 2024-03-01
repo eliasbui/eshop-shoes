@@ -13,7 +13,7 @@ public class Negated<T> : SpecificationBase<T>
     }
 
     // NegatedSpecification
-    public override Expression<Func<T, bool>> Criteria
+    public override Expression<Func<T, bool>?> Criteria
     {
         get
         {
@@ -26,7 +26,7 @@ public class Negated<T> : SpecificationBase<T>
                 objParam
             );
 
-            return newExpr;
+            return newExpr!;
         }
     }
 }
