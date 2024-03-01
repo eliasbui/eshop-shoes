@@ -1,4 +1,7 @@
-﻿using Eshop.Core.Domain.Bases;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Eshop.Core.Domain.Bases;
 using Eshop.Core.Domain.Interfaces;
 using Eshop.Core.Domain.Specification;
 

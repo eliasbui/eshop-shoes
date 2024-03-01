@@ -1,4 +1,6 @@
-﻿namespace Eshop.Core.Domain.Models;
+﻿using System.Collections.Generic;
+
+namespace Eshop.Core.Domain.Models;
 
 public record ListResultModel<T>(List<T> Items, long TotalItems, int Page, int PageSize) where T : notnull
 {

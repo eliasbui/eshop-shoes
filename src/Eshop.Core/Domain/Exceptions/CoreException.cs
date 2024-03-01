@@ -1,4 +1,6 @@
-﻿namespace Eshop.Core.Domain.Exceptions;
+﻿using System;
+
+namespace Eshop.Core.Domain.Exceptions;
 
 public class CoreException(string message) : Exception(message)
 {

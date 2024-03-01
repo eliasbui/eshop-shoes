@@ -1,4 +1,5 @@
-﻿using Eshop.Core.Domain.Models;
+﻿using System.Collections.Generic;
+using Eshop.Core.Domain.Models;
 
 namespace Eshop.Core.Domain.Interfaces;
 

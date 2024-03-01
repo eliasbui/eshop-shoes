@@ -1,4 +1,6 @@
-﻿namespace Eshop.Core.Domain.Bases;
+﻿using System;
+
+namespace Eshop.Core.Domain.Bases;
 
 public class EntityBase
 {

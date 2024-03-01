@@ -1,4 +1,5 @@
-﻿using Eshop.Core.Domain.Bases;
+﻿using System.Collections.Generic;
+using Eshop.Core.Domain.Bases;
 
 namespace Eshop.Core.Domain.Interfaces;
 
