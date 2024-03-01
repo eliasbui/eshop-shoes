@@ -1,4 +1,6 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using Eshop.Core.Domain.Models;
 
 namespace Eshop.Core.Domain.Specification;
