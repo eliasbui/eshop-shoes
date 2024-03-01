@@ -7,72 +7,80 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Eshop.Infrastructure.EfCore;
-
-public static class Extensions
+namespace Eshop.Infrastructure.EfCore
 {
-    public static IServiceCollection AddPostgresDbContext<TDbContext>(this IServiceCollection services,
-        string connString, Action<DbContextOptionsBuilder> doMoreDbContextOptionsConfigure = null!,
-        Action<IServiceCollection> doMoreActions = null!)
-        where TDbContext : DbContext, IDbFacadeResolver, IDomainEventContext
+    public static class Extensions
     {
-        services.AddDbContext<TDbContext>(options =>
+        public static IServiceCollection AddPostgresDbContext<TDbContext>(this IServiceCollection services,
+            string connString, Action<DbContextOptionsBuilder>? doMoreDbContextOptionsConfigure = null,
+            Action<IServiceCollection>? doMoreActions = null)
+            where TDbContext : DbContext, IDbFacadeResolver, IDomainEventContext
         {
-            options.UseNpgsql(connString, sqlOptions =>
+            services.AddDbContext<TDbContext>(options =>
             {
-                sqlOptions.MigrationsAssembly(typeof(TDbContext).Assembly.GetName().Name);
-                sqlOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-            }).UseSnakeCaseNamingConvention();
+                options.UseNpgsql(connString, sqlOptions =>
+                {
+                    sqlOptions.MigrationsAssembly(typeof(TDbContext).Assembly.GetName().Name);
+                    sqlOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+                }).UseSnakeCaseNamingConvention();
 
-            doMoreDbContextOptionsConfigure?.Invoke(options);
-        });
+                doMoreDbContextOptionsConfigure?.Invoke(options);
+            });
 
-        services.AddScoped<IDbFacadeResolver>(provider => provider.GetService<TDbContext>()!);
-        services.AddScoped<IDomainEventContext>(provider => provider.GetService<TDbContext>()!);
+            services.AddScoped<IDbFacadeResolver>(provider => provider.GetService<TDbContext>()!);
+            services.AddScoped<IDomainEventContext>(provider => provider.GetService<TDbContext>()!);
 
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(TxBehavior<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(TxBehavior<,>));
 
-        services.AddHostedService<DbContextMigratorHostedService>();
+            services.AddHostedService<DbContextMigratorHostedService>();
 
-        doMoreActions?.Invoke(services);
+            doMoreActions?.Invoke(services);
 
-        return services;
-    }
+            return services;
+        }
 
-    public static IServiceCollection AddRepository(this IServiceCollection services, Type repoType)
-    {
-        services.Scan(scan => scan
-            .FromAssembliesOf(repoType)
-            .AddClasses(classes =>
-                classes.AssignableTo(repoType)).As(typeof(IRepository<>)).WithScopedLifetime()
-            .AddClasses(classes =>
-                classes.AssignableTo(repoType)).As(typeof(IGridRepository<>)).WithScopedLifetime()
-        );
-
-        services.AddScoped(typeof(IRepository<>), repoType);
-
-        return services;
-    }
-
-    public static void MigrateDataFromScript(this MigrationBuilder migrationBuilder)
-    {
-        var assembly = Assembly.GetCallingAssembly();
-        var files = assembly.GetManifestResourceNames();
-        var filePrefix = $"{assembly.GetName().Name}.Data.Scripts."; //IMPORTANT
-
-        foreach (var file in files
-                     .Where(f => f.StartsWith(filePrefix) && f.EndsWith(".sql"))
-                     .Select(f => new { PhysicalFile = f, LogicalFile = f.Replace(filePrefix, string.Empty) })
-                     .OrderBy(f => f.LogicalFile))
+        public static IServiceCollection AddRepository(this IServiceCollection services, Type repoType)
         {
-            using var stream = assembly.GetManifestResourceStream(file.PhysicalFile);
-            using var reader = new StreamReader(stream!);
-            var command = reader.ReadToEnd();
+            var repoAssembly = repoType.Assembly;
 
-            if (string.IsNullOrWhiteSpace(command))
-                continue;
+            var repoInterfaces = repoAssembly.GetTypes()
+                .Where(type =>
+                    type.IsInterface && type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IRepository<>));
 
-            migrationBuilder.Sql(command);
+            foreach (var repoInterface in repoInterfaces)
+            {
+                var repoImplementations = repoAssembly.GetTypes()
+                    .Where(type => !type.IsAbstract && repoInterface.IsAssignableFrom(type));
+
+                foreach (var repoImplementation in repoImplementations)
+                {
+                    services.AddScoped(repoInterface, repoImplementation);
+                }
+            }
+
+            return services;
+        }
+
+        public static void MigrateDataFromScript(this MigrationBuilder migrationBuilder)
+        {
+            var assembly = Assembly.GetCallingAssembly();
+            var files = assembly.GetManifestResourceNames();
+            var filePrefix = $"{assembly.GetName().Name}.Data.Scripts."; //IMPORTANT
+
+            foreach (var file in files
+                         .Where(f => f.StartsWith(filePrefix) && f.EndsWith(".sql"))
+                         .Select(f => new { PhysicalFile = f, LogicalFile = f.Replace(filePrefix, string.Empty) })
+                         .OrderBy(f => f.LogicalFile))
+            {
+                using var stream = assembly.GetManifestResourceStream(file.PhysicalFile);
+                using var reader = new StreamReader(stream!);
+                var command = reader.ReadToEnd();
+
+                if (string.IsNullOrWhiteSpace(command))
+                    continue;
+
+                migrationBuilder.Sql(command);
+            }
         }
     }
 }
