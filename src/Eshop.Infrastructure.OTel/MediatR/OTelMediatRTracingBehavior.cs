@@ -20,7 +20,7 @@ public class OTelMediatRTracingBehavior<TRequest, TResponse>(
     private readonly ILogger<OTelMediatRTracingBehavior<TRequest, TResponse>> _logger =
         logger ?? throw new ArgumentNullException(nameof(logger));
 
-    public async Task<TResponse> Handle(TRequest request,
+    private async Task<TResponse> Handle(TRequest request,
         CancellationToken cancellationToken,
         RequestHandlerDelegate<TResponse> next)
     {

@@ -41,22 +41,13 @@ namespace Eshop.Infrastructure.EfCore
 
         public static IServiceCollection AddRepository(this IServiceCollection services, Type repoType)
         {
-            var repoAssembly = repoType.Assembly;
-
-            var repoInterfaces = repoAssembly.GetTypes()
-                .Where(type =>
-                    type.IsInterface && type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IRepository<>));
-
-            foreach (var repoInterface in repoInterfaces)
-            {
-                var repoImplementations = repoAssembly.GetTypes()
-                    .Where(type => !type.IsAbstract && repoInterface.IsAssignableFrom(type));
-
-                foreach (var repoImplementation in repoImplementations)
-                {
-                    services.AddScoped(repoInterface, repoImplementation);
-                }
-            }
+            services.Scan(scan => scan
+                .FromAssembliesOf(repoType)
+                .AddClasses(classes =>
+                    classes.AssignableTo(repoType)).As(typeof(IRepository<>)).WithScopedLifetime()
+                .AddClasses(classes =>
+                    classes.AssignableTo(repoType)).As(typeof(IGridRepository<>)).WithScopedLifetime()
+            );
 
             return services;
         }
