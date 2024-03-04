@@ -12,7 +12,7 @@ namespace Eshop.Infrastructure.EfCore
     public static class Extensions
     {
         public static IServiceCollection AddPostgresDbContext<TDbContext>(this IServiceCollection services,
-            string connString, Action<DbContextOptionsBuilder>? doMoreDbContextOptionsConfigure = null,
+            string? connString, Action<DbContextOptionsBuilder>? doMoreDbContextOptionsConfigure = null,
             Action<IServiceCollection>? doMoreActions = null)
             where TDbContext : DbContext, IDbFacadeResolver, IDomainEventContext
         {
