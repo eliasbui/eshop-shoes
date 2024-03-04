@@ -1,4 +1,4 @@
-﻿namespace Data.ApplicationContracts.Common;
+﻿namespace DataContractor.ApplicationContracts.Common;
 
 public class QueryDto
 {

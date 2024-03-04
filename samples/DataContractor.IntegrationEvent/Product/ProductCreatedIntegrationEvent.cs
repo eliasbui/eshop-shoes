@@ -1,6 +1,6 @@
 ﻿using Eshop.Core.Domain.Bases;
 
-namespace Data.IntegrationEvent.Product;
+namespace DataContractor.IntegrationEvent.Product;
 
 public class ProductCreatedIntegrationEvent : EventBase
 {

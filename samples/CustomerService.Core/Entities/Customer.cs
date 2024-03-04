@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CustomerService.Core.Specs;
-using Data.IntegrationEvent.Customer;
+using DataContractor.IntegrationEvent.Customer;
 using Eshop.Core.Domain.Bases;
 
 namespace CustomerService.Core.Entities

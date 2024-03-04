@@ -1,7 +1,7 @@
 ﻿using Eshop.Core.Domain.Attributes;
 using Eshop.Core.Domain.Bases;
 
-namespace Data.IntegrationEvent.Customer;
+namespace DataContractor.IntegrationEvent.Customer;
 
 [DaprPubSubName(PubSubName = "pubsub")]
 public class CustomerCreatedIntegrationEvent : EventBase

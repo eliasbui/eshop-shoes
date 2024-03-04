@@ -1,5 +1,6 @@
 ﻿namespace CustomerService.Application;
 
-public class Class1
+public struct Anchor
 {
+    
 }

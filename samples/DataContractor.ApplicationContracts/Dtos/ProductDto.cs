@@ -1,4 +1,4 @@
-﻿namespace Data.ApplicationContracts.Dtos;
+﻿namespace DataContractor.ApplicationContracts.Dtos;
 
 public class ProductDto
 {

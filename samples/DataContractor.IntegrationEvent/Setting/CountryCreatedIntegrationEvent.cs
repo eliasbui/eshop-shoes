@@ -1,6 +1,6 @@
 ﻿using Eshop.Core.Domain.Bases;
 
-namespace Data.IntegrationEvent.Setting;
+namespace DataContractor.IntegrationEvent.Setting;
 
 public class CountryCreatedIntegrationEvent : EventBase
 {

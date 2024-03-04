@@ -1,4 +1,4 @@
-﻿namespace Data.ApplicationContracts;
+﻿namespace DataContractor.ApplicationContracts;
 
 public class AppConstants
 {

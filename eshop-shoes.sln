@@ -38,9 +38,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Application", "samples\CustomerService.Application\CustomerService.Application.csproj", "{C2948293-26BF-4DF0-80A6-2C7FC83B26DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.ApplicationContracts", "samples\Data.ApplicationContracts\Data.ApplicationContracts.csproj", "{5A209AD6-D626-4F77-BFDB-D6D1A4F0FF43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractor.ApplicationContracts", "samples\DataContractor.ApplicationContracts\DataContractor.ApplicationContracts.csproj", "{5A209AD6-D626-4F77-BFDB-D6D1A4F0FF43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.IntegrationEvent", "samples\Data.IntegrationEvent\Data.IntegrationEvent.csproj", "{6C221034-5E3F-40BB-94BE-5B75C2CF9BC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractor.IntegrationEvent", "samples\DataContractor.IntegrationEvent\DataContractor.IntegrationEvent.csproj", "{6C221034-5E3F-40BB-94BE-5B75C2CF9BC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.Core", "samples\CustomerService.Core\CustomerService.Core.csproj", "{3219EE0F-C57F-4B9E-B32A-D2D6EC140026}"
 EndProject

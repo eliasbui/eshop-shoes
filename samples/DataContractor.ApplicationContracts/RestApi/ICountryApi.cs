@@ -1,8 +1,8 @@
-﻿using Data.ApplicationContracts.Common;
-using Data.ApplicationContracts.Dtos;
+﻿using DataContractor.ApplicationContracts.Common;
+using DataContractor.ApplicationContracts.Dtos;
 using RestEase;
 
-namespace Data.ApplicationContracts.RestApi;
+namespace DataContractor.ApplicationContracts.RestApi;
 
 public interface ICountryApi
 {

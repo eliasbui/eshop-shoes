@@ -1,4 +1,4 @@
-﻿namespace Data.ApplicationContracts.Common
+﻿namespace DataContractor.ApplicationContracts.Common
 {
     public record ResultDto<T>(T Data, bool IsError = false, string ErrorMessage = default!) where T : notnull;
 

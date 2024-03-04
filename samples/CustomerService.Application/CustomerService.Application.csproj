@@ -6,4 +6,18 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="UseCases\Query\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Eshop.Core\Eshop.Core.csproj" />
+      <ProjectReference Include="..\CustomerService.Core\CustomerService.Core.csproj" />
+      <ProjectReference Include="..\DataContractor.ApplicationContracts\DataContractor.ApplicationContracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.9.0" />
+    </ItemGroup>
+
 </Project>
